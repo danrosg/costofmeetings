@@ -11,8 +11,8 @@
     <DefaultLocale>en-US</DefaultLocale>
     <DisplayName DefaultValue="Cost of Meetings" />
     <Description DefaultValue="Shows the users the cost of a meeting" />
-    <IconUrl DefaultValue="https://localhost:3000/images/blue-64.png" />
-    <HighResolutionIconUrl DefaultValue="https://localhost:3000/images/blue-80.png" />
+    <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+    <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png" />
     <SupportUrl DefaultValue="https://localhost:3000/support" />
     <Hosts>
         <Host Name="Mailbox" />
