@@ -32,8 +32,14 @@
         <h1 class="ms-fontSize-su ms-fontWeight-light ms-fontColor-neutralPrimary">Welcome</h1>
     </header>
     <section id="sideload-msg" class="ms-welcome__main">
-        <h2 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">Please sideload your addin to see app body.</h2>
+      <h2 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">Please sideload your addin to see app body. </h2>
+      <div id="message" name="message" title="message div">
+  <h5></h5>
+
+</div>
     </section>
+   <button onclick="getAllRecipients()">Get recipients</button>
+
     <main id="app-body" class="ms-welcome__main" style="display: none;">
         <h2 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20"> Discover what Git the Gist can do for you today! </h2>
         <ul class="ms-List ms-welcome__features ms-u-slideUpIn10">
@@ -61,6 +67,7 @@
 
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="node_modules/office-ui-fabric-js/dist/js/fabric.js"></script>
+    <script src="scripts/main.js" type="text/javascript"></script>
 
 
 </body>
