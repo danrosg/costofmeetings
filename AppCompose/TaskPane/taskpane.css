@@ -33,6 +33,11 @@ ul,p,h1,h2,h3,h4,h5,h6 {
 ul {
   padding: 0; }
 
+li {
+  float: left;
+  margin: 3px;
+}
+
   #settings-prompt {
     margin: 10px 0;
   }
