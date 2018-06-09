@@ -3,9 +3,12 @@
  * See LICENSE in the project root for license information.
  */
 
-// The initialize function must be run each time a new page is loaded
-Office.initialize = reason => {
+ var config;
+ var btnEvent;
 
-};
+ // The initialize function must be run each time a new page is loaded
+ Office.initialize = function (reason) {
+   //   config = getConfig();
+ };
 
-// Add any ui-less function here
+ var settingsDialog;

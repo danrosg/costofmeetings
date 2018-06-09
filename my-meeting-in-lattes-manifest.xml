@@ -283,7 +283,7 @@
                 <bt:Image id="green-icon-80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
             </bt:Images>
             <bt:Urls>
-                <bt:Url id="functionFile" DefaultValue="https://localhost:3000/FunctionFile/Functions.html" />
+                <bt:Url id="functionFile" DefaultValue="https://localhost:3000/function-file/function-file.html" />
                 <bt:Url id="readTaskPaneUrl" DefaultValue="https://localhost:3000/AppRead/TaskPane/TaskPane.html" />
                 <bt:Url id="composeTaskPaneUrl" DefaultValue="https://localhost:3000/AppCompose/TaskPane/TaskPane.html" />
                 <bt:Url id="customPaneUrl" DefaultValue="https://localhost:3000/AppRead/CustomPane/CustomPane.html" />
