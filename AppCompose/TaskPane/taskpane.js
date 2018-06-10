@@ -11,9 +11,17 @@ var item;
     item = Office.context.mailbox.item;
     jQuery(document).ready(function(){
 
-    loadCupsOfCoffee();
+    //loadCupsOfCoffee();
 
-  });
+
+      $('#insert-button').on('click', function(){
+
+        getAllRecipients();
+        loadCupsOfCoffee();
+
+      })
+
+    });
   };
 
   function loadCupsOfCoffee()
