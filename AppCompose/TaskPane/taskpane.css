@@ -35,7 +35,7 @@ ul {
 
 li {
   float: left;
-  margin: 3px;
+  margin: 0px;
 }
 
   #settings-prompt {
@@ -174,9 +174,9 @@ li {
 }
 
 .ms-welcome__header {
-    min-height: 70px;
-    padding: 20px;
-    padding-bottom: 30px;
+    min-height: 50px;
+    padding: 10px;
+    padding-bottom: 10px;
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: column;
