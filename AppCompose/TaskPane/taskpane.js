@@ -45,7 +45,7 @@ var end = "";
       $('#coffee-list').empty();
       buildCoffeeList("#coffee-list",total);
 
-		recipients=[]
+		recipients=[];
     total=0;
 
 		//write(total);
