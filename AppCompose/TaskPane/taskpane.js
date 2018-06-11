@@ -44,7 +44,7 @@ var end = "";
         buildCoffeeList("#coffee-list",10);
 		getCost();
 		
-		write(total);
+		//write(total);
 
 
       })
@@ -241,6 +241,6 @@ function getCost(){
 	//write(gradeTotal);
 	//sets total to be cost per hour gradeTotal times timeTotal
 	total = gradeTotal * timeTotal;
-	
+	document.getElementById('coffee-counter').innerText = total;
 
 }
