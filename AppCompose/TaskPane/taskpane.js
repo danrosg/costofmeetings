@@ -2,6 +2,9 @@ var item;
 var paygrades = {}; //hashmap for the paygrades
 var userid_grades = {};
 var recipients=[];
+var total = 0;
+var start = "";
+var end = "";
 
 
 (function(){
@@ -14,6 +17,8 @@ var recipients=[];
 
     item = Office.context.mailbox.item;
     jQuery(document).ready(function(){
+		// this is called once at document ready because for some reason the first time this function is called end time does not pull back. clicking the button will call this function a second time which pulls back start and end dates just fine. 
+		getHour();
 
     //loadCupsOfCoffee();
 
@@ -35,8 +40,12 @@ var recipients=[];
       $('#insert-button').on('click', function(){
         //printData(paygrades);
         //printData(userid_grades);
-        getAllRecipients();
+		getAllRecipients();
         buildCoffeeList("#coffee-list",10);
+		getCost();
+		
+		//write(total);
+
 
       })
 
@@ -145,10 +154,12 @@ function displayAddresses (asyncResult) {
         //
         recipients.push(name);
 
-        total = total + userid_grades[name];
-        write ( name+' '+total+'\n');
+        //total = total + userid_grades[name];
+        //write ( name+' '+total+'\n');
 
     }
+	
+	
 }
 
 // Writes to a div with id='message' on the page.
@@ -190,4 +201,46 @@ function fadeCounter()
 }
 function fadeItem() {
     $('ul li:hidden:first').fadeIn('fast',fadeItem);
+}
+
+// function to get start and end times of a meeting. 
+function getHour(){
+    item.start.getAsync(
+        function (asyncResult) {
+            if (asyncResult.status == Office.AsyncResultStatus.Failed){
+                write(asyncResult.error.message);
+            }
+            else {
+			start = asyncResult.value;
+			}
+		});
+	item.end.getAsync(
+        function (asyncResult) {
+            if (asyncResult.status == Office.AsyncResultStatus.Failed){
+                write(asyncResult.error.message);
+            }
+            else {
+			end = asyncResult.value;
+			}
+		});	
+}
+
+function getCost(){
+	gradeTotal = 0;
+	timeTotal = 0;
+	//Uses userid_grades to get grades of all users, then uses paygrades to get cost per hour. 
+	 for (var i=0; i<recipients.length; i++)
+    {
+		gradeTotal = gradeTotal + Number(paygrades[userid_grades[recipients[i]]]);
+		
+	}
+	getHour();
+	//write(gradeTotal);
+    //calculates hours of meeting
+	timeTotal = (Date.parse(end) - Date.parse(start))/1000/60/60;
+	//write(gradeTotal);
+	//sets total to be cost per hour gradeTotal times timeTotal
+	total = gradeTotal * timeTotal;
+	
+
 }
