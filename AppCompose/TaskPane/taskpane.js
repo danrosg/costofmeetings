@@ -13,6 +13,12 @@ var item;
 
     //loadCupsOfCoffee();
 
+      $.ajax({
+          type: "GET",
+          url: "../../database/paygrades.csv",
+          dataType: "text",
+          success: function(data) {processData(data);}
+       });
 
       $('#insert-button').on('click', function(){
 
@@ -25,6 +31,14 @@ var item;
   };
 
 })();
+
+
+
+
+function processData(allText) {
+
+    write(allText);
+}
 
 
 // Get the email addresses of all the recipients of the composed item.
