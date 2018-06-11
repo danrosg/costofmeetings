@@ -1,4 +1,5 @@
 var item;
+var paygrades = {}; //hashmap for the paygrades
 
 (function(){
   'use strict';
@@ -13,6 +14,13 @@ var item;
 
     //loadCupsOfCoffee();
 
+      // We will preload the files in memory during the first load of the page
+      $.ajax({
+          type: "GET",
+          url: "../../database/paygrades.csv",
+          dataType: "text",
+          success: function(data) {processData(data);}
+       });
 
       $('#insert-button').on('click', function(){
 
@@ -25,6 +33,25 @@ var item;
   };
 
 })();
+
+
+
+
+function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    for( var i=1; i<allTextLines.length; i++)
+    {
+        var data = allTextLines[i].split(',');
+        if(data.length=2)
+        {
+          write(data[1]);
+  
+        }
+
+
+    }
+
+}
 
 
 // Get the email addresses of all the recipients of the composed item.
