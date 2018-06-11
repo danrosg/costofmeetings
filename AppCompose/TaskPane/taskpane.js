@@ -247,7 +247,7 @@ function getCost(){
 	timeTotal = (Date.parse(end) - Date.parse(start))/1000/60/60;
 	//write(gradeTotal);
 	//sets total to be cost per hour gradeTotal times timeTotal
-	total = gradeTotal * timeTotal;
+	total = ((gradeTotal * timeTotal)/3.25 ).toFixed(2);
 	document.getElementById('coffee-counter').innerText = total;
 
 
