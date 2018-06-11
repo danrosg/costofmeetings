@@ -45,7 +45,7 @@ var recipients=[];
 
 })();
 
-//funtion to debug the csv load 
+//funtion to debug the csv load
 function printData(map){
 
   write (map['DROSALES']+'\n');
@@ -132,14 +132,21 @@ function getAllRecipients() {
 // Recipients are in an array of EmailAddressDetails
 // objects passed in asyncResult.value.
 function displayAddresses (asyncResult) {
+
+    var total=0;
+
     for (var i=0; i<asyncResult.value.length; i++)
     {
 
         var data =asyncResult.value[i].emailAddress;
         var userid = data.split('@');
         var name = userid.length==2 ? userid[0].toUpperCase() : null;
-        write ( name+'\n');
+
+        //
         recipients.push(name);
+
+        total = total + userid_grades[name];
+        write ( name+' '+total+'\n');
 
     }
 }
