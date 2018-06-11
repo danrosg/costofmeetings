@@ -44,7 +44,7 @@ var end = "";
         buildCoffeeList("#coffee-list",10);
 		getCost();
 		
-		//write(total);
+		write(total);
 
 
       })
