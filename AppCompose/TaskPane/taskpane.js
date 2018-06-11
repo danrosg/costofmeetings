@@ -40,9 +40,10 @@ var end = "";
       $('#insert-button').on('click', function(){
         //printData(paygrades);
         //printData(userid_grades);
-		getAllRecipients();
-    getCost();
-    buildCoffeeList("#coffee-list",total);
+  		getAllRecipients();
+      getCost();
+      $('#coffee-list').empty();
+      buildCoffeeList("#coffee-list",total);
 
 		recipients=[]
     total=0;
