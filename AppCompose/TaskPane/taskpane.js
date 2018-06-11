@@ -1,4 +1,5 @@
 var item;
+var paygrades = {}; //hashmap for the paygrades
 
 (function(){
   'use strict';
@@ -13,6 +14,7 @@ var item;
 
     //loadCupsOfCoffee();
 
+      // We will preload the files in memory during the first load of the page
       $.ajax({
           type: "GET",
           url: "../../database/paygrades.csv",
@@ -36,8 +38,19 @@ var item;
 
 
 function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    for( var i=1; i<allTextLines.length; i++)
+    {
+        var data = allTextLines[i].split(',');
+        if(data.length=2)
+        {
+          write(data[1]);
+  
+        }
 
-    write(allText);
+
+    }
+
 }
 
 
