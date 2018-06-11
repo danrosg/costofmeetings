@@ -1,6 +1,7 @@
 var item;
 var paygrades = {}; //hashmap for the paygrades
 var userid_grades = {};
+var recipients=[];
 
 
 (function(){
@@ -32,8 +33,8 @@ var userid_grades = {};
         });
 
       $('#insert-button').on('click', function(){
-        printData(paygrades);
-        printData(userid_grades);
+        //printData(paygrades);
+        //printData(userid_grades);
         getAllRecipients();
         buildCoffeeList("#coffee-list",10);
 
@@ -44,7 +45,7 @@ var userid_grades = {};
 
 })();
 
-
+//funtion to debug the csv load 
 function printData(map){
 
   write (map['DROSALES']+'\n');
@@ -94,7 +95,7 @@ function getAllRecipients() {
         else {
             // Async call to get to-recipients of the item completed.
             // Display the email addresses of the to-recipients.
-            write ('To-recipients of the item: ');
+            //write ('To-recipients of the item: ');
             displayAddresses(asyncResult);
         }
     }); // End getAsync for to-recipients.
@@ -107,7 +108,7 @@ function getAllRecipients() {
         else {
             // Async call to get cc-recipients of the item completed.
             // Display the email addresses of the cc-recipients.
-            write ('Cc-recipients of the item: ');
+            //write ('Cc-recipients of the item: ');
             displayAddresses(asyncResult);
         }
     }); // End getAsync for cc-recipients.
@@ -120,7 +121,7 @@ function getAllRecipients() {
         }
         else {
             // Display the email addresses of the bcc-recipients.
-            write ('Bcc-recipients of the item: ');
+          //  write ('Bcc-recipients of the item: ');
             displayAddresses(asyncResult);
         }
 
@@ -132,7 +133,15 @@ function getAllRecipients() {
 // objects passed in asyncResult.value.
 function displayAddresses (asyncResult) {
     for (var i=0; i<asyncResult.value.length; i++)
-        write (asyncResult.value[i].emailAddress);
+    {
+
+        var data =asyncResult.value[i].emailAddress;
+        var userid = data.split('@');
+        var name = userid.length==2 ? userid[0].toUpperCase() : null;
+        write ( name+'\n');
+        recipients.push(name);
+
+    }
 }
 
 // Writes to a div with id='message' on the page.
