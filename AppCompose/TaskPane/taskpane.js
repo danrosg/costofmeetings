@@ -17,7 +17,7 @@ var end = "";
 
     item = Office.context.mailbox.item;
     jQuery(document).ready(function(){
-		// this is called once at document ready because for some reason the first time this function is called end time does not pull back. clicking the button will call this function a second time which pulls back start and end dates just fine. 
+		// this is called once at document ready because for some reason the first time this function is called end time does not pull back. clicking the button will call this function a second time which pulls back start and end dates just fine.
 		getHour();
 
     //loadCupsOfCoffee();
@@ -41,11 +41,12 @@ var end = "";
         //printData(paygrades);
         //printData(userid_grades);
 		getAllRecipients();
-        buildCoffeeList("#coffee-list",10);
-		getCost();
-		recipients=[]
+    getCost();
+    buildCoffeeList("#coffee-list",total);
 
-		
+		recipients=[]
+    total=0;
+
 		//write(total);
 
 
@@ -161,8 +162,8 @@ function displayAddresses (asyncResult) {
         //write ( name+' '+total+'\n');
 
     }
-	
-	
+
+
 }
 
 // Writes to a div with id='message' on the page.
@@ -206,7 +207,7 @@ function fadeItem() {
     $('ul li:hidden:first').fadeIn('fast',fadeItem);
 }
 
-// function to get start and end times of a meeting. 
+// function to get start and end times of a meeting.
 function getHour(){
     item.start.getAsync(
         function (asyncResult) {
@@ -225,20 +226,20 @@ function getHour(){
             else {
 			end = asyncResult.value;
 			}
-		});	
+		});
 }
 
 function getCost(){
 	gradeTotal = 0;
 	timeTotal = 0;
 	total = 0;
-	//Uses userid_grades to get grades of all users, then uses paygrades to get cost per hour. 
+	//Uses userid_grades to get grades of all users, then uses paygrades to get cost per hour.
 	 for (var i=0; i<recipients.length; i++)
     {
 		gradeTotal = gradeTotal + Number(paygrades[userid_grades[recipients[i]]]);
-		
+
 	}
-	
+
 	getHour();
 	//write(gradeTotal);
     //calculates hours of meeting
@@ -247,6 +248,6 @@ function getCost(){
 	//sets total to be cost per hour gradeTotal times timeTotal
 	total = gradeTotal * timeTotal;
 	document.getElementById('coffee-counter').innerText = total;
-	
+
 
 }
