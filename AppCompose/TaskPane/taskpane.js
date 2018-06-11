@@ -118,12 +118,18 @@ function buildCoffeeList(parent,quantity) {
 
     }
 
+      $('#coffee-counter-container').show();
       $('#coffee-list-container').show();
+      fadeCounter();
       fadeItem();
 
   //$('.ms-ListItem').on('click', clickFunc);
 }
 
+function fadeCounter()
+{
+    $('h3:hidden:first').fadeIn(1000,fadeItem);
+}
 function fadeItem() {
     $('ul li:hidden:first').fadeIn('fast',fadeItem);
 }

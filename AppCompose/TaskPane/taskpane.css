@@ -46,6 +46,11 @@ li {
   margin: 0 10px;
 }
 
+#coffee-counter {
+    margin-top: 15px;
+    text-align: center;
+}
+
 .clearfix {
   display: block;
   clear: both;
