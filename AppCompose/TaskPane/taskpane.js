@@ -1,5 +1,7 @@
 var item;
 var paygrades = {}; //hashmap for the paygrades
+var userid_grades = {};
+
 
 (function(){
   'use strict';
@@ -19,11 +21,19 @@ var paygrades = {}; //hashmap for the paygrades
           type: "GET",
           url: "../../database/paygrades.csv",
           dataType: "text",
-          success: function(data) {processData(data);}
+          success: function(data) {processData(data,paygrades);}
        });
 
-      $('#insert-button').on('click', function(){
+       $.ajax({
+           type: "GET",
+           url: "../../database/userid_grades.csv",
+           dataType: "text",
+           success: function(data) {processData(data,userid_grades);}
+        });
 
+      $('#insert-button').on('click', function(){
+        printData(paygrades);
+        printData(userid_grades);
         getAllRecipients();
         buildCoffeeList("#coffee-list",10);
 
@@ -35,17 +45,22 @@ var paygrades = {}; //hashmap for the paygrades
 })();
 
 
+function printData(map){
+
+  write (map['DROSALES']+'\n');
+  write (map[1]+'\n');
+}
 
 
-function processData(allText) {
+function processData(allText,map) {
     var allTextLines = allText.split(/\r\n|\n/);
     for( var i=1; i<allTextLines.length; i++)
     {
         var data = allTextLines[i].split(',');
         if(data.length=2)
         {
-          write(data[1]);
-  
+          map[data[0]] = data[1];
+
         }
 
 
