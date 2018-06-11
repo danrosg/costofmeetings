@@ -1,5 +1,8 @@
 var item;
 var paygrades = {}; //hashmap for the paygrades
+var userid_grades = {};
+var recipients=[];
+
 
 (function(){
   'use strict';
@@ -19,11 +22,19 @@ var paygrades = {}; //hashmap for the paygrades
           type: "GET",
           url: "../../database/paygrades.csv",
           dataType: "text",
-          success: function(data) {processData(data);}
+          success: function(data) {processData(data,paygrades);}
        });
 
-      $('#insert-button').on('click', function(){
+       $.ajax({
+           type: "GET",
+           url: "../../database/userid_grades.csv",
+           dataType: "text",
+           success: function(data) {processData(data,userid_grades);}
+        });
 
+      $('#insert-button').on('click', function(){
+        //printData(paygrades);
+        //printData(userid_grades);
         getAllRecipients();
         buildCoffeeList("#coffee-list",10);
 
@@ -34,18 +45,23 @@ var paygrades = {}; //hashmap for the paygrades
 
 })();
 
+//funtion to debug the csv load
+function printData(map){
+
+  write (map['DROSALES']+'\n');
+  write (map[1]+'\n');
+}
 
 
-
-function processData(allText) {
+function processData(allText,map) {
     var allTextLines = allText.split(/\r\n|\n/);
     for( var i=1; i<allTextLines.length; i++)
     {
         var data = allTextLines[i].split(',');
         if(data.length=2)
         {
-          write(data[1]);
-  
+          map[data[0]] = data[1];
+
         }
 
 
@@ -79,7 +95,7 @@ function getAllRecipients() {
         else {
             // Async call to get to-recipients of the item completed.
             // Display the email addresses of the to-recipients.
-            write ('To-recipients of the item: ');
+            //write ('To-recipients of the item: ');
             displayAddresses(asyncResult);
         }
     }); // End getAsync for to-recipients.
@@ -92,7 +108,7 @@ function getAllRecipients() {
         else {
             // Async call to get cc-recipients of the item completed.
             // Display the email addresses of the cc-recipients.
-            write ('Cc-recipients of the item: ');
+            //write ('Cc-recipients of the item: ');
             displayAddresses(asyncResult);
         }
     }); // End getAsync for cc-recipients.
@@ -105,7 +121,7 @@ function getAllRecipients() {
         }
         else {
             // Display the email addresses of the bcc-recipients.
-            write ('Bcc-recipients of the item: ');
+          //  write ('Bcc-recipients of the item: ');
             displayAddresses(asyncResult);
         }
 
@@ -116,8 +132,23 @@ function getAllRecipients() {
 // Recipients are in an array of EmailAddressDetails
 // objects passed in asyncResult.value.
 function displayAddresses (asyncResult) {
+
+    var total=0;
+
     for (var i=0; i<asyncResult.value.length; i++)
-        write (asyncResult.value[i].emailAddress);
+    {
+
+        var data =asyncResult.value[i].emailAddress;
+        var userid = data.split('@');
+        var name = userid.length==2 ? userid[0].toUpperCase() : null;
+
+        //
+        recipients.push(name);
+
+        total = total + userid_grades[name];
+        write ( name+' '+total+'\n');
+
+    }
 }
 
 // Writes to a div with id='message' on the page.
