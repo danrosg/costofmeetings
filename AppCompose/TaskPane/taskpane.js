@@ -17,18 +17,13 @@ var item;
       $('#insert-button').on('click', function(){
 
         getAllRecipients();
-        loadCupsOfCoffee();
+        buildCoffeeList("#coffee-list",10);
 
       })
 
     });
   };
 
-  function loadCupsOfCoffee()
-  {
-      $('#coffee-list-container').show();
-
-  }
 })();
 
 
@@ -101,4 +96,34 @@ function displayAddresses (asyncResult) {
 // Writes to a div with id='message' on the page.
 function write(message){
     document.getElementById('message').innerText += message ;
+}
+
+
+
+
+function buildCoffeeList(parent,quantity) {
+
+  var i;
+
+  for (i=0;i<quantity;i++){
+
+    var listItem = $('<li/>')
+      .attr("hidden","hidden")
+      .appendTo(parent);
+
+    var desc = $('<img/>')
+      .attr("src","../../assets/coffee-icon-small.png" )
+      .attr("alt","cup of coffee")
+      .appendTo(listItem);
+
+    }
+
+      $('#coffee-list-container').show();
+      fadeItem();
+
+  //$('.ms-ListItem').on('click', clickFunc);
+}
+
+function fadeItem() {
+    $('ul li:hidden:first').fadeIn('fast',fadeItem);
 }
