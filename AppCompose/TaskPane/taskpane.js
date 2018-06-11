@@ -43,6 +43,8 @@ var end = "";
 		getAllRecipients();
         buildCoffeeList("#coffee-list",10);
 		getCost();
+		recipients=[]
+
 		
 		//write(total);
 
@@ -142,7 +144,8 @@ function getAllRecipients() {
 // objects passed in asyncResult.value.
 function displayAddresses (asyncResult) {
 
-    var total=0;
+    //var total=0;
+	//var recipients=[];
 
     for (var i=0; i<asyncResult.value.length; i++)
     {
@@ -228,12 +231,14 @@ function getHour(){
 function getCost(){
 	gradeTotal = 0;
 	timeTotal = 0;
+	total = 0;
 	//Uses userid_grades to get grades of all users, then uses paygrades to get cost per hour. 
 	 for (var i=0; i<recipients.length; i++)
     {
 		gradeTotal = gradeTotal + Number(paygrades[userid_grades[recipients[i]]]);
 		
 	}
+	
 	getHour();
 	//write(gradeTotal);
     //calculates hours of meeting
@@ -242,5 +247,6 @@ function getCost(){
 	//sets total to be cost per hour gradeTotal times timeTotal
 	total = gradeTotal * timeTotal;
 	document.getElementById('coffee-counter').innerText = total;
+	
 
 }
