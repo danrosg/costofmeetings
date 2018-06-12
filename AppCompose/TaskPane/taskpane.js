@@ -44,9 +44,10 @@ var end = "";
       getCost();
       $('#coffee-list').empty();
       buildCoffeeList("#coffee-list",total);
+      $('#coffee-fact-container').show();
 
 		recipients=[];
-    total=0;
+    //total=0;
 
 		//write(total);
 
@@ -194,18 +195,20 @@ function buildCoffeeList(parent,quantity) {
 
       $('#coffee-counter-container').show();
       $('#coffee-list-container').show();
+
       fadeCounter();
       fadeItem();
+
 
   //$('.ms-ListItem').on('click', clickFunc);
 }
 
 function fadeCounter()
 {
-    $('h3:hidden:first').fadeIn(1000,fadeItem);
+    $('h3:hidden:first').fadeIn(4000,fadeCounter);
 }
 function fadeItem() {
-    $('ul li:hidden:first').fadeIn('fast',fadeItem);
+    $('ul li:hidden:first').fadeIn(50,fadeItem);
 }
 
 // function to get start and end times of a meeting.
@@ -231,6 +234,8 @@ function getHour(){
 }
 
 function getCost(){
+  var storesalesperc;
+
 	gradeTotal = 0;
 	timeTotal = 0;
 	total = 0;
@@ -245,10 +250,15 @@ function getCost(){
 	//write(gradeTotal);
     //calculates hours of meeting
 	timeTotal = (Date.parse(end) - Date.parse(start))/1000/60/60;
+
+
 	//write(gradeTotal);
 	//sets total to be cost per hour gradeTotal times timeTotal
 	total = ((gradeTotal * timeTotal)/3.25 ).toFixed(2);
-	document.getElementById('coffee-counter').innerText = total;
+  storesalesperc =(( total*3.25 )/4500*100 ).toFixed(2);
 
+	document.getElementById('coffee-counter').innerText = total + ' Grande Americano cups';
+  document.getElementById('coffee-fact-text').innerText = 'This represents '+storesalesperc+ '% of the average US Store Sales ....';
+  document.getElementById('coffee-fact-text2').innerText = 'or '  +(storesalesperc*12/100).toFixed(2)+' hours of operation in a regular store';
 
 }
