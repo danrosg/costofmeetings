@@ -51,6 +51,15 @@ li {
     text-align: center;
 }
 
+#coffee-fact-text {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#coffee-fact-text2 {
+    margin-top: 25px;
+    text-align: center;
+}
 .clearfix {
   display: block;
   clear: both;
