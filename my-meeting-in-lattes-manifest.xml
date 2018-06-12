@@ -11,8 +11,8 @@
     <DefaultLocale>en-US</DefaultLocale>
     <DisplayName DefaultValue="Cost of Meetings" />
     <Description DefaultValue="Shows the users the cost of a meeting" />
-    <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
-    <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png" />
+    <IconUrl DefaultValue="https://localhost:3000/assets/sbux-icon-32.png" />
+    <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/sbux-icon-80.png" />
     <SupportUrl DefaultValue="https://localhost:3000/support" />
     <Hosts>
         <Host Name="Mailbox" />
@@ -66,7 +66,7 @@
                         <OfficeTab id="TabDefault">
                             <Group id="apptComposeDemoGroup">
                                 <Label resid="groupLabel" />
-                                <!-- Function (UI-less) button -->
+                                <!-- Function (UI-less) button
                                 <Control xsi:type="Button" id="apptComposeFunctionButton">
                                     <Label resid="funcComposeButtonLabel" />
                                     <Supertip>
@@ -81,8 +81,8 @@
                                     <Action xsi:type="ExecuteFunction">
                                         <FunctionName>addDefaultMsgToBody</FunctionName>
                                     </Action>
-                                </Control>
-                                <!-- Menu (dropdown) button -->
+                                </Control> -->
+                                <!-- Menu (dropdown) button
                                 <Control xsi:type="Menu" id="apptComposeMenuButton">
                                     <Label resid="menuComposeButtonLabel" />
                                     <Supertip>
@@ -141,7 +141,7 @@
                                             </Action>
                                         </Item>
                                     </Items>
-                                </Control>
+                                </Control> -->
                                 <!-- Task pane button -->
                                 <Control xsi:type="Button" id="apptComposeOpenPaneButton">
                                     <Label resid="paneComposeButtonLabel" />
@@ -168,7 +168,7 @@
                         <OfficeTab id="TabDefault">
                             <Group id="apptReadDemoGroup">
                                 <Label resid="groupLabel" />
-                                <!-- Function (UI-less) button -->
+                                <!-- Function (UI-less) button
                                 <Control xsi:type="Button" id="apptReadFunctionButton">
                                     <Label resid="funcReadButtonLabel" />
                                     <Supertip>
@@ -183,8 +183,8 @@
                                     <Action xsi:type="ExecuteFunction">
                                         <FunctionName>getSubject</FunctionName>
                                     </Action>
-                                </Control>
-                                <!-- Menu (dropdown) button -->
+                                </Control> -->
+                                <!-- Menu (dropdown) button
                                 <Control xsi:type="Menu" id="apptReadMenuButton">
                                     <Label resid="menuReadButtonLabel" />
                                     <Supertip>
@@ -243,7 +243,7 @@
                                             </Action>
                                         </Item>
                                     </Items>
-                                </Control>
+                                </Control> -->
                                 <!-- Task pane button -->
                                 <Control xsi:type="Button" id="apptReadOpenPaneButton">
                                     <Label resid="paneReadButtonLabel" />
@@ -270,17 +270,17 @@
         <Resources>
             <bt:Images>
                 <!-- Blue icon -->
-                <bt:Image id="blue-icon-16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
-                <bt:Image id="blue-icon-32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
-                <bt:Image id="blue-icon-80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+                <bt:Image id="blue-icon-16" DefaultValue="https://localhost:3000/assets/sbux-icon-16.png" />
+                <bt:Image id="blue-icon-32" DefaultValue="https://localhost:3000/assets/sbux-icon-32.png" />
+                <bt:Image id="blue-icon-80" DefaultValue="https://localhost:3000/assets/sbux-icon-80.png" />
                 <!-- Red icon -->
-                <bt:Image id="red-icon-16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
-                <bt:Image id="red-icon-32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
-                <bt:Image id="red-icon-80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+                <bt:Image id="red-icon-16" DefaultValue="https://localhost:3000/assets/sbux-icon-16.png" />
+                <bt:Image id="red-icon-32" DefaultValue="https://localhost:3000/assets/sbux-icon-32.png" />
+                <bt:Image id="red-icon-80" DefaultValue="https://localhost:3000/assets/sbux-icon-80.png" />
                 <!-- Green icon -->
-                <bt:Image id="green-icon-16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
-                <bt:Image id="green-icon-32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
-                <bt:Image id="green-icon-80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+                <bt:Image id="green-icon-16" DefaultValue="https://localhost:3000/assets/sbux-icon-16.png" />
+                <bt:Image id="green-icon-32" DefaultValue="https://localhost:3000/assets/sbux-icon-32.png" />
+                <bt:Image id="green-icon-80" DefaultValue="https://localhost:3000/assets/sbux-icon-80.png" />
             </bt:Images>
             <bt:Urls>
                 <bt:Url id="functionFile" DefaultValue="https://localhost:3000/function-file/function-file.html" />
